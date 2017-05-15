@@ -11,4 +11,4 @@ WORKDIR /test-client/scripts
 COPY scripts/*.sh /test-client/scripts/
 RUN chmod +x /test-client/scripts/*.sh
 #start the docker service
-RUN service docker start
+#RUN service docker start
