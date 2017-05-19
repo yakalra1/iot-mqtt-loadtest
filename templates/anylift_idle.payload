@@ -1,7 +1,7 @@
 {"d": 
 { "version": 0, 
   "ken": 12345678, 
-  "time": $(date --utc +%FT%TZ), 
+  "time": "$(date --utc +%FT%TZ)", 
   "temperature": 5.12123, 
   "humidity": 1.232, 
   "air_pressure": 1.23456, 
