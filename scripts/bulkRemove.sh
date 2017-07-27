@@ -15,7 +15,8 @@ done <$GATEWAY_FILE
 #Remove gateway
 echo "Removing gateway device"
 #echo "curl-s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed"
-eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_DEREG_LOG
+#eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_DEREG_LOG
+eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_DEREG_LOG
 
 #Construct message for devices
 DEVICE_JSON="["
@@ -38,5 +39,6 @@ done <$DEVICE_FILE
 #Remove devices
 echo "Removing devices"
 #echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed"
-eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_DEREG_LOG
+#eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_DEREG_LOG
+eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/remove' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_DEREG_LOG
 #read response and retry for deregistrations that failed.

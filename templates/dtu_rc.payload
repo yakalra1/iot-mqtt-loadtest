@@ -1,0 +1,108 @@
+{
+	"Message": "RoutineCall",
+	"EquipmentNumber": 123456789,
+	"Version": 2,
+	"Param": {
+		"Timestamp": "$(date --utc +%FT%TZ)",
+		"ControllerConnection": true,
+		"ElevatorStatistics": {
+			"Counters": {
+				"StartsTotal": 132342,
+				"StopsTotal": 131232,
+				"UpDirections": 123213,
+				"DownDirections": 12323,
+				"NDoorOpenning": 121321,
+				"TDoorOpennings": 12321,
+				"MinTDoorOpenning": 121321,
+				"MaxTDoorOpennings": 12321,
+				"NDoorClosing": 121321,
+				"TDoorclosings": 12321,
+				"MinTDoorClosing": 121321,
+				"MaxTDoorClosing": 12321,
+				"DiscriminatedAlarms": 12343,
+				"MinTUpDoor2door": 12322,
+				"MaxTUpDoor2door": 12322,
+				"TTUpDoor2door": 12322,
+				"NTUpDoor2door": 12322,
+				"MinTDnDoor2door": 12322,
+				"MaxTDnDoor2door": 12322,
+				"TDnDoor2door": 12322,
+				"NDnDoor2door": 12322,
+				"AvgWeight": 12332,
+				"Resets": 1209
+			},
+			"Timers": {
+				"RunningTime": 132342,
+				"Normal": 123123,
+				"Service": 123213,
+				"Synchronization": 123213,
+				"Fireman": 123213,
+				"EmergencyPower": 123213,
+				"Attendant": 123213,
+				"Freight": 123213,
+				"Parking": 123213,
+				"CarTest": 123213,
+				"OutOfService": 123213,
+				"Priority": 123213,
+				"PriorityCall": 123213,
+				"EarthQuake": 123213,
+				"FastRecallService": 123213,
+				"CloseLandingCall": 123213,
+				"LandingCallDisconnect": 123213
+			},
+			"FloorCounters": [{
+					"Floor": 1,
+					"DrOperations": 132342,
+					"DrReopensByLCcuts": 132342,
+					"DrReopensBySafetyEdge": 132342,
+					"DrReopensByOpenButton": 132342,
+					"DrReopensByOtherReason": 132342,
+					"Nudgings": 132342,
+					"LightCurtainCuts": 132342,
+					"LightPhotocellCuts": 132342,
+					"RelevellingStarts": 132342,
+					"BadStopsAboveFloor": 132342,
+					"BadStopsBelowFloor": 132342,
+					"UpStarts": 132342,
+					"DownStarts": 132342
+				},
+				{
+					"Floor": 2,
+					"DrOperations": 132342,
+					"DrReopensByLCcuts": 132342,
+					"DrReopensBySafetyEdge": 132342,
+					"DrReopensByOpenButton": 132342,
+					"DrReopensByOtherReason": 132342,
+					"Nudgings": 132342,
+					"LightCurtainCuts": 132342,
+					"LightPhotocellCuts": 132342,
+					"RelevellingStarts": 132342,
+					"BadStopsAboveFloor": 132342,
+					"BadStopsBelowFloor": 132342,
+					"UpStarts": 132342,
+					"DownStarts": 132342
+				}
+			],
+			"VoiceCallStatistics": [{
+				"Type": "OUT",
+				"PhoneNumber": "8613820202020",
+				"StartTime": "2015-05-28T15:35:48.000Z",
+				"EndTime": "2015-05-28T15:35:48.000Z"
+			}, {
+				"Type": "IN",
+				"PhoneNumber": "8613820202020",
+				"StartTime": "2015-05-28T15:35:48.000Z",
+				"EndTime": "2015-05-28T15:35:48.000Z"
+			}],
+			"DTUMessageStatistics": {
+				"OnlineStatus": 1,
+				"ConfigurationChanges": 1,
+				"FieldChanges": 1,
+				"Alarm": 1,
+				"FaultMessage": 1,
+				"FaultRecMessage": 1,
+				"ModeChange": 1
+			}
+		}
+	}
+}

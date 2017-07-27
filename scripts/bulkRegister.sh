@@ -25,7 +25,8 @@ GATEWAY_JSON="[{\"typeId\": \"mosquitto-gateway\",\"deviceId\": \"$GATEWAY_ID\",
 echo "$GATEWAY_ID=$GATEWAY_AUTHTOKEN" >> $GATEWAY_FILE
 
 #echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed"
-eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
+#eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
+eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
 
 IFS=',' read -r -a array <<< "${DEVICE_EVENT}"
 length=${#array[@]}
@@ -58,6 +59,6 @@ do
 done
 
 #echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed"
-eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
-
+#eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
+eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
 #read response and retry for registrations that failed.
