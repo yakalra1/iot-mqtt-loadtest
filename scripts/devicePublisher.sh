@@ -4,7 +4,7 @@ ORGID=${VCAP_SERVICES_IOTF_SERVICE_0_CREDENTIALS_ORG}
 DEVICEID=$1
 DEVICETYPE=$2
 EVENTTYPE=$3
-topic="iot-2/type/lce_dtu/id/$DEVICEID/evt/$EVENTTYPE/fmt/json"
+topic="iot-2/type/$DEVICETYPE/id/$DEVICEID/evt/$EVENTTYPE/fmt/json"
 
 #payload template file name <DeviceType>_<Eventtype>.payload 
 #for e.g Demo_status.payload where Demo is DeviceType and status is Eventtype
