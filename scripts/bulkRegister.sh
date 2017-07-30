@@ -1,6 +1,8 @@
 #!/bin/bash
 GATEWAY_FILE="/test/data/gateways"
 DEVICE_FILE="/test/data/devices"
+GATEWAY_REG_FILE="/test/data/gateways_test"
+DEVICE_REG_FILE="/test/data/devices_test"
 
 GATEWAY_REG_LOG="/test/logs/gateway_reg.log"
 DEVICE_REG_LOG="/test/logs/device_reg.log"
@@ -9,8 +11,12 @@ DEVICE_EVENT=${DEV_EVT}
 INDEX=$5
 
 # Remove if file exists else create an empty file
+cat /dev/null > $GATEWAY_REG_LOG
+cat /dev/null > $DEVICE_REG_LOG
 cat /dev/null > $GATEWAY_FILE
 cat /dev/null > $DEVICE_FILE
+cat /dev/null > $GATEWAY_REG_FILE
+cat /dev/null > $DEVICE_REG_FILE
 
 # Gateway and Device type is expected to be created manually before executing the scripts
 
@@ -24,7 +30,7 @@ GATEWAY_AUTHTOKEN=$(uuidgen -r)
 GATEWAY_JSON="[{\"typeId\": \"mosquitto-gateway\",\"deviceId\": \"$GATEWAY_ID\",\"authToken\": \"$GATEWAY_AUTHTOKEN\"}]"
 echo "$GATEWAY_ID=$GATEWAY_AUTHTOKEN" >> $GATEWAY_FILE
 
-#echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed"
+echo "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> GATEWAY_REG_FILE
 #eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
 eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
 
@@ -58,7 +64,7 @@ do
 	echo "$DEVICE_ID=$DEVICE_AUTHTOKEN,$DEVICETYPE" >> $DEVICE_FILE
 done
 
-#echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed"
+echo "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> DEVICE_REG_LOG
 #eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
 eval "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
 #read response and retry for registrations that failed.
