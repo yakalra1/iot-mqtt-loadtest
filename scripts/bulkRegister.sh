@@ -25,7 +25,6 @@ fi
 GATEWAY_AUTHTOKEN=$(uuidgen -r)
 GATEWAY_JSON="[{\"typeId\": \"mosquitto-gateway\",\"deviceId\": \"$GATEWAY_ID\",\"authToken\": \"$GATEWAY_AUTHTOKEN\"}]"
 echo "$GATEWAY_ID=$GATEWAY_AUTHTOKEN" >> $GATEWAY_FILE
-echo "https://$1.internetofthings.chinabluemix.net/api/v0002/bulk/devices/add, User $2,$3" >> $GATEWAY_FILE
 
 #echo "curl -s --user '$2':'$3' 'https://$1.internetofthings.chinabluemix.net/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed"
 #eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$GATEWAY_JSON' --compressed" >> $GATEWAY_REG_LOG
@@ -60,7 +59,6 @@ do
 	fi
 	echo "$DEVICE_ID=$DEVICE_AUTHTOKEN,$DEVICETYPE" >> $DEVICE_FILE
 done
-echo "https://$1.internetofthings.chinabluemix.net/api/v0002/bulk/devices/add, User $2,$3" >> $DEVICE_FILE
 
 #echo "curl -s --user '$2':'$3' 'https://$1/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed"
 #eval "curl -s --user '$2':'$3' 'https://$1.internetofthings.ibmcloud.com/api/v0002/bulk/devices/add' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Connection: keep-alive' --data-binary '$DEVICE_JSON' --compressed" >> $DEVICE_REG_LOG
