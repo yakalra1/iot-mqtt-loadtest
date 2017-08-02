@@ -1,6 +1,6 @@
 {
 	"Message": "RoutineCall",
-	"EquipmentNumber": 123456789,
+	"EquipmentNumber": EQNUM,
 	"Version": 2,
 	"Param": {
 		"Timestamp": "$(date --utc +%FT%TZ)",
