@@ -48,9 +48,9 @@ cat /dev/null > $pid_file
 
 echo "publish_starttime=$(date +%s%3N)" >> /test/logs/timelines.log
 #start the devices
-equipmentNumber=0
+#equipmentNumber=0
 while IFS='=' read -r id pwddevtype; do
-    let equipmentNumber=${equipmentNumber}+1
+    #let equipmentNumber=${equipmentNumber}+1
 	sleep $SLEEP_BT_DEV; 
 	
 	# pass deviceid devicetype and eventtype to devicePublisher.sh
@@ -69,7 +69,7 @@ while IFS='=' read -r id pwddevtype; do
 	index=$(shuf -i 0-`expr $evtlen - 1` -n 1)
 	eventType=${evtType_arr[index]}	
 	#echo "/test/scripts/devicePublisher.sh $id ${deviceType} ${eventType} &"
-	/test/scripts/devicePublisher.sh $id ${deviceType} ${eventType} ${equipmentNumber} &
+	/test/scripts/devicePublisher.sh $id ${deviceType} ${eventType} &
 	
 	pid=$!
 	echo $pid >> $pid_file

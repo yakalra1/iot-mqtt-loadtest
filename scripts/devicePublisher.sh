@@ -4,8 +4,7 @@ ORGID=${VCAP_SERVICES_IOTF_SERVICE_0_CREDENTIALS_ORG}
 DEVICEID=$1
 DEVICETYPE=$2
 EVENTTYPE=$3
-EQUIPMENTNUMBER=$4
-topic="iot-2/type/lce_dtu/id/$EQUIPMENTNUMBER/evt/$EVENTTYPE/fmt/json"
+topic="iot-2/type/lce_dtu/id/$DEVICEID/evt/$EVENTTYPE/fmt/json"
 
 #payload template file name <DeviceType>_<Eventtype>.payload 
 #for e.g Demo_status.payload where Demo is DeviceType and status is Eventtype
@@ -16,7 +15,7 @@ if [ ! -f $PAYLOAD_NAME ] || [ ! -s $PAYLOAD_NAME ]; then
 fi
 
 i=1
-clientID="d:$ORGID:$DEVICETYPE:$DEVICEID"
+clientID="g:$ORGID:$DEVICETYPE:$DEVICEID"
 
 while [[ $i -le $NUM_PUB ]]; do
 	#current date in millis
@@ -29,7 +28,7 @@ while [[ $i -le $NUM_PUB ]]; do
 	payload=$(eval "cat <<EOF
 	$(<$PAYLOAD_NAME)
 	" 2> /dev/null)
-	payload=${payload/EQNUM/$EQUIPMENTNUMBER}
+	payload=${payload/EQNUM/$DEVICEID}
 	#echo "$1 publishing to topic $topic at $NOW_DT"
 	#echo "mosquitto_pub -t $topic -m '$payload' -i $clientID && sleep $SLEEP_PUB"
 	eval "mosquitto_pub -t $topic -m '$payload' -i $clientID && sleep $SLEEP_PUB"
