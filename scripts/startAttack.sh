@@ -48,9 +48,7 @@ cat /dev/null > $pid_file
 
 echo "publish_starttime=$(date +%s%3N)" >> /test/logs/timelines.log
 #start the devices
-#equipmentNumber=0
 while IFS='=' read -r id pwddevtype; do
-    #let equipmentNumber=${equipmentNumber}+1
 	sleep $SLEEP_BT_DEV; 
 	
 	# pass deviceid devicetype and eventtype to devicePublisher.sh
