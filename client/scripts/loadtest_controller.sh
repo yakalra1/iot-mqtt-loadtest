@@ -341,6 +341,7 @@ echo "Load Test Started at $(date +%s%3N)"
 echo "container_rampup_starttime=$(date +%s%3N)"
 for ((i=1;i<=$NUM_GW;i++)); do
 	rm -rf container_id.cid
+	cf config --trace true
 	cf ic run --cidfile container_id.cid -p 22:22 -p 1883:1883 ${MEMORY_ARGS} ${ARGS} ${IMAGE_NAME} tail -f /dev/null
 	RESULT=$?
 	if [ $RESULT -ne 0 ]; then
